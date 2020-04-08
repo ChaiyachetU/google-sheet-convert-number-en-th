@@ -51,9 +51,9 @@ function changeToArabicNumber() {
 /**
  * แสดงผลจากตัวเลขอารบิกเป็นตัวเลขไทย
  *
- * @param {number} input the number to convert
- * @param {number} decimal the decimal of number to convert
- * @return ตัวเลขไทยจากเลขอารบิก
+ * @param {number} input The arabic number to convert
+ * @param {number} decimal The decimal of number to convert
+ * @return {string} thai number ตัวเลขไทยจากเลขอารบิก
  * @customfunction
  */
 function THAINUMBER(input, decimal) {
@@ -85,8 +85,8 @@ function THAINUMBER(input, decimal) {
 /**
  * แสดงผลจากตัวเลขไทยเป็นตัวเลขอารบิก.
  *
- * @param {number} input the number to convert.
- * @return The arabic number format.
+ * @param {string} input The thai number to convert
+ * @return {number} The arabic number format
  * @customfunction
  */
 function ARABICNUMBER(input) {
