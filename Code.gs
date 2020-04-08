@@ -51,30 +51,30 @@ function changeToArabicNumber() {
 /**
  * แสดงผลจากตัวเลขอารบิกเป็นตัวเลขไทย
  *
- * @param {number} input The arabic number to convert
+ * @param {number} arabicNumber The arabic number to convert
  * @param {number} decimal The decimal of number to convert
- * @return {string} thai number ตัวเลขไทยจากเลขอารบิก
+ * @return {string} thaiNumber ตัวเลขไทยจากเลขอารบิก
  * @customfunction
  */
-function THAINUMBER(input, decimal) {
+function THAINUMBER(arabicNumber, decimal) {
   
-  if (typeof(input) === 'string') {
+  if (typeof(arabicNumber) === 'string') {
     
-    var output = arabicNumberToThaiNumber(input);
+    var thaiNumber = arabicNumberToThaiNumber(arabicNumber);
     
-    return output;
+    return thaiNumber;
     
   } else {
   
     if (typeof(decimal) === 'undefined') decimal = 0;
   
-    var inputWithDeciaml = input.toFixed(decimal); //toFixed() method return string type.
+    var arabicNumberWithDeciaml = arabicNumber.toFixed(decimal); //toFixed() method return string type.
     
-    var inputWithComma = numberWithCommas(inputWithDeciaml);
+    var arabicNumberWithComma = numberWithCommas(arabicNumberWithDeciaml);
     
-    var output = arabicNumberToThaiNumber(inputWithComma);
+    var thaiNumber = arabicNumberToThaiNumber(arabicNumberWithComma);
     
-    return output;
+    return thaiNumber;
   
   }
   
@@ -85,29 +85,13 @@ function THAINUMBER(input, decimal) {
 /**
  * แสดงผลจากตัวเลขไทยเป็นตัวเลขอารบิก.
  *
- * @param {string} input The thai number to convert
- * @return {number} The arabic number format
+ * @param {string} thaiNumber The thai number to convert
+ * @return {number} arabicNumber ตัวเลขอารบิกจากเลขไทย
  * @customfunction
  */
-function ARABICNUMBER(input) {
-  var output = thaiNumberToArabicNumber(input);
-  return output;
-}
-
-//set thai number to arabic number format
-function thaiNumberToArabicNumber(number) {
-	number = number.replace(/๐/gi,'0');
-	number = number.replace(/๑/gi,'1');
-	number = number.replace(/๒/gi,'2');
-	number = number.replace(/๓/gi,'3');
-	number = number.replace(/๔/gi,'4');
-	number = number.replace(/๕/gi,'5');
-	number = number.replace(/๖/gi,'6');
-	number = number.replace(/๗/gi,'7');
-	number = number.replace(/๘/gi,'8');
-	number = number.replace(/๙/gi,'9');
-    number = number.replace(/,/gi,'');
-	return number;
+function ARABICNUMBER(thaiNumber) {
+  var arabicNumber = thaiNumberToArabicNumber(thaiNumber);
+  return arabicNumber;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////
 
@@ -138,5 +122,21 @@ function arabicNumberToThaiNumber(number) {
 	number = number.replace(/9/gi,'๙');
 	return number;
     
+}
+
+//set thai number to arabic number format
+function thaiNumberToArabicNumber(number) {
+	number = number.replace(/๐/gi,'0');
+	number = number.replace(/๑/gi,'1');
+	number = number.replace(/๒/gi,'2');
+	number = number.replace(/๓/gi,'3');
+	number = number.replace(/๔/gi,'4');
+	number = number.replace(/๕/gi,'5');
+	number = number.replace(/๖/gi,'6');
+	number = number.replace(/๗/gi,'7');
+	number = number.replace(/๘/gi,'8');
+	number = number.replace(/๙/gi,'9');
+    number = number.replace(/,/gi,'');
+	return number;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////
