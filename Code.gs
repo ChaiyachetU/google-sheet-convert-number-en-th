@@ -11,39 +11,74 @@ function onOpen() {
 
 // Change selection to thai number
 function changeToThaiNumber() {
+  
+  var ui = SpreadsheetApp.getUi();
+  
+  var result = ui.alert(
+               'Please confirm',
+               'Are you sure you want to change to Thai Number?',
+               ui.ButtonSet.YES_NO);
 
-  // Get the active spreadsheet
-  var sheet = SpreadsheetApp.getActiveSheet();
-  
-  var selectionValues = sheet.getSelection().getActiveRange().getDisplayValues();
-  
-  var thaiNumberValues = selectionValues.map(function(numbers) {
-  
-    return numbers.map(function(number) { return THAINUMBER(number) })
+  // Process the user's response.
+  if (result == ui.Button.YES) {
     
-  });
+    // User clicked "Yes".
+    // Get the active spreadsheet
+    var sheet = SpreadsheetApp.getActiveSheet();
+    
+    var selectionValues = sheet.getSelection().getActiveRange().getDisplayValues();
+    
+    var thaiNumberValues = selectionValues.map(function(numbers) {
+    
+      return numbers.map(function(number) { return THAINUMBER(number) })
+      
+    });
+    
+    // Set values to selection
+    sheet.getSelection().getActiveRange().setValues(thaiNumberValues);
+    
+  } else {
   
-  // Set values to selection
-  sheet.getSelection().getActiveRange().setValues(thaiNumberValues);
+    // User clicked "No" or X in the title bar.
+    return;
+  
+  }
+  
 }
 
 // Change selection to arabic number
 function changeToArabicNumber() {
 
-  // Get the active spreadsheet
-  var sheet = SpreadsheetApp.getActiveSheet();
+  var ui = SpreadsheetApp.getUi();
   
-  var selectionValues = sheet.getSelection().getActiveRange().getDisplayValues();
-  
-  var arabicNumberValues = selectionValues.map(function(numbers) {
-  
-    return numbers.map(function(number) { return ARABICNUMBER(number) })
-    
-  });
-  
-  // Set values to selection
-  sheet.getSelection().getActiveRange().setValues(arabicNumberValues);
+  var result = ui.alert(
+               'Please confirm',
+               'Are you sure you want to change to Arabic Number?',
+               ui.ButtonSet.YES_NO);
 
+  // Process the user's response.
+  if (result == ui.Button.YES) {
+
+    // Get the active spreadsheet
+    var sheet = SpreadsheetApp.getActiveSheet();
+    
+    var selectionValues = sheet.getSelection().getActiveRange().getDisplayValues();
+    
+    var arabicNumberValues = selectionValues.map(function(numbers) {
+    
+      return numbers.map(function(number) { return ARABICNUMBER(number) })
+      
+    });
+    
+    // Set values to selection
+    sheet.getSelection().getActiveRange().setValues(arabicNumberValues);
+    
+  } else {
+  
+    // User clicked "No" or X in the title bar.
+    return;
+  
+  }
 }
 ///////////////////////////////////////////////////////////////////////////////////////////
 
